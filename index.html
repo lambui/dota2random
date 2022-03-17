@@ -23,6 +23,12 @@
             var hero = _.sample(heroes);
             document.getElementById('hero-img').setAttribute('src', 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/' + hero.name.split('npc_dota_hero_')[1] + '.png');
         }
+
+        document.addEventListener('keypress', (e) => {
+            if (e.keyCode == 32) {
+                randomHero();
+            }
+        });
     </script>
     <style>
         /* https://colorhunt.co/palette/1919192d4263c84b31ecdbba */
