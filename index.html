@@ -27,12 +27,104 @@
             } else {
                 lastHero = hero;
             }
-            document.getElementById('hero-img').setAttribute('src', 'https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/' + hero.name.split('npc_dota_hero_')[1] + '.png');
+            $('.result-image').css({
+                'background-image': 'url("https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/' + hero.name.split('npc_dota_hero_')[1] + '.png")',
+                'background-size': 'contain',
+                height: '112px',
+                'background-position': 'center'
+            });
+            $('.result').css('display', 'block');
+            $('.result').prop('href', 'https://www.dota2.com/hero/' + hero.name.split('npc_dota_hero_')[1].replace(/_/g, ''));
+            $('.result-name').text(hero.name_loc);
         }
+
+        var exercises = [];
+        function initExercise() {
+            exercises = JSON.parse("[{\"name\":\"PLANK\",\"coords\":\"73,531,186,687\",\"href\":\"https://www.youtube.com/watch?v=SpxVmcK17Is\"},{\"name\":\"CRUNCH\",\"coords\":\"188,531,301,687\",\"href\":\"https://www.youtube.com/watch?v=XaTBdK3hAKk\"},{\"name\":\"CHEST PRESS\",\"coords\":\"303,531,415,687\",\"href\":\"https://www.youtube.com/watch?v=xEp2gZkTzEM\"},{\"name\":\"PUSH-UP\",\"coords\":\"416,532,529,688\",\"href\":\"https://www.youtube.com/watch?v=8_2TVhsCD-U\"},{\"name\":\"STRONG MAN FELX\",\"coords\":\"531,530,643,688\",\"href\":\"https://www.youtube.com/watch?v=QSpJ-eiOm8c\"},{\"name\":\"WALL SIT\",\"coords\":\"646,532,758,686\",\"href\":\"https://www.youtube.com/watch?v=8nJHJ05UhG4\"},{\"name\":\"CALF RAISE\",\"coords\":\"759,531,874,687\",\"href\":\"https://www.youtube.com/watch?v=0Qra3UFmK_0\"},{\"name\":\"HIGH KNEES\",\"coords\":\"875,531,988,687\",\"href\":\"https://www.youtube.com/watch?v=vj0ZyfGrtZo\"},{\"name\":\"SUPERMAN\",\"coords\":\"987,531,1101,688\",\"href\":\"https://www.youtube.com/watch?v=zZPL2fBlnNs\"},{\"name\":\"MASON TWIST\",\"coords\":\"72,711,186,868\",\"href\":\"https://www.youtube.com/watch?v=Agf2PARTGYs\"},{\"name\":\"CROSS KNEE\",\"coords\":\"188,713,300,869\",\"href\":\"https://www.youtube.com/watch?v=D2df-agmAYk\"},{\"name\":\"JUMP BACK PU\",\"coords\":\"301,712,415,870\",\"href\":\"https://www.youtube.com/watch?v=dWDWw-gjXSU\"},{\"name\":\"WIDE ARM PU\",\"coords\":\"416,712,530,869\",\"href\":\"https://www.youtube.com/watch?v=FIheyRv9Rno\"},{\"name\":\"FLOOR DIPS\",\"coords\":\"532,712,644,869\",\"href\":\"https://www.youtube.com/watch?v=N-CYU2PeTR0\"},{\"name\":\"BRIDGE\",\"coords\":\"644,712,758,868\",\"href\":\"https://www.youtube.com/watch?v=En8U-F2sliU\"},{\"name\":\"LUNGE\",\"coords\":\"761,710,874,869\",\"href\":\"https://www.youtube.com/watch?v=7Vnan3rjWIg\"},{\"name\":\"RUNNING JACKS\",\"coords\":\"875,712,989,868\",\"href\":\"https://www.youtube.com/watch?v=h2aUyBA4OCo\"},{\"name\":\"BICYCLE\",\"coords\":\"72,889,186,1047\",\"href\":\"https://www.youtube.com/watch?v=c7cRWUgt0Wg\"},{\"name\":\"CIRCLE KICK\",\"coords\":\"187,889,300,1048\",\"href\":\"https://www.youtube.com/watch?v=ArGK5BjIvJs\"},{\"name\":\"SQUAT\",\"coords\":\"760,889,873,1048\",\"href\":\"https://www.youtube.com/watch?v=un6kLXXOqMw\"},{\"name\":\"MTN CLIMBER\",\"coords\":\"875,890,987,1047\",\"href\":\"https://www.youtube.com/watch?v=lPmcbD3sewM\"},{\"name\":\"AB FLEX\",\"coords\":\"72,1070,186,1224\",\"href\":\"https://www.youtube.com/watch?v=nJWrI2cj3Rw\"},{\"name\":\"VERTICAL CRUNCH\",\"coords\":\"188,1070,301,1224\",\"href\":\"https://www.youtube.com/watch?v=hEGKVrRqfIA\"},{\"name\":\"TWISTING LUNGE\",\"coords\":\"760,1072,873,1223\",\"href\":\"https://www.youtube.com/watch?v=sP1Rzf9D2Ss\"},{\"name\":\"TUCK JUMP\",\"coords\":\"874,1070,987,1223\",\"href\":\"https://www.youtube.com/watch?v=Ka0rJd5yGF8\"},{\"name\":\"SPIDERMAN PLANK\",\"coords\":\"73,1248,186,1403\",\"href\":\"https://www.youtube.com/watch?v=wSzQe2W8LWo\"},{\"name\":\"BIRD DOG\",\"coords\":\"189,1248,301,1403\",\"href\":\"https://www.youtube.com/watch?v=H_DuvInuhhw\"},{\"name\":\"REVERSE LEG LIFT\",\"coords\":\"759,1248,873,1404\",\"href\":\"https://www.youtube.com/watch?v=lr_GVH2V8Qw\"},{\"name\":\"SKI JUMPER\",\"coords\":\"875,1248,988,1403\",\"href\":\"https://www.youtube.com/watch?v=vrdFdjTUodI\"},{\"name\":\"SIDE RAISE\",\"coords\":\"74,1426,186,1584\",\"href\":\"https://www.youtube.com/watch?v=mkuWBUCUwAw\"},{\"name\":\"BODY ROCK\",\"coords\":\"189,1426,301,1584\",\"href\":\"https://www.youtube.com/watch?v=6OnZAknKWBk\"},{\"name\":\"1 CALF RAISE\",\"coords\":\"760,1426,873,1585\",\"href\":\"https://www.youtube.com/watch?v=2px-ywKBilk\"},{\"name\":\"POWER JACKS\",\"coords\":\"874,1427,987,1583\",\"href\":\"https://www.youtube.com/watch?v=2ic-wEcen2o\"},{\"name\":\"AIRPLANE ABS\",\"coords\":\"73,1607,186,1764\",\"href\":\"https://www.youtube.com/watch?v=eaP41h2xLBY\"},{\"name\":\"FLUTTER KICK\",\"coords\":\"189,1607,301,1764\",\"href\":\"https://www.youtube.com/watch?v=DYuqO3bbhtU\"},{\"name\":\"\\\"T\\\" PUSH-UP\",\"coords\":\"301,1608,415,1764\",\"href\":\"https://www.youtube.com/watch?v=_P7OTQq_o9c\"},{\"name\":\"SPIDERMAN PU\",\"coords\":\"417,1608,529,1765\",\"href\":\"https://www.youtube.com/watch?v=tGs5Fki04Yw\"},{\"name\":\"DIAMOND PU\",\"coords\":\"532,1608,643,1763\",\"href\":\"https://www.youtube.com/watch?v=FOGvo8cNaTw\"},{\"name\":\"JACK SQUAT\",\"coords\":\"644,1608,759,1764\",\"href\":\"https://www.youtube.com/watch?v=Fak2YElbNKI\"},{\"name\":\"SQUAT JUMP\",\"coords\":\"761,1608,872,1764\",\"href\":\"https://www.youtube.com/watch?v=l7qWIFCioko\"},{\"name\":\"BURPEE\",\"coords\":\"875,1608,988,1764\",\"href\":\"https://www.youtube.com/watch?v=4jl3ItNozgs\"},{\"name\":\"CROSS PLANK\",\"coords\":\"72,1790,188,1945\",\"href\":\"https://www.youtube.com/watch?v=LlVh5zVckw0\"},{\"name\":\"REVERSE CRUNCH\",\"coords\":\"186,1789,300,1947\",\"href\":\"https://www.youtube.com/watch?v=AYfderZgwUM\"},{\"name\":\"DRAGON WALK\",\"coords\":\"300,1788,415,1947\",\"href\":\"https://www.youtube.com/watch?v=uk7ne2dvSOU\"},{\"name\":\"HINDU PU\",\"coords\":\"415,1789,529,1947\",\"href\":\"https://www.youtube.com/watch?v=MSFbghwkwxk\"},{\"name\":\"TWIST UP\",\"coords\":\"529,1789,644,1945\",\"href\":\"https://www.youtube.com/watch?v=ZRBEUI8OH24\"},{\"name\":\"KICK YOUR BUTT\",\"coords\":\"644,1789,760,1947\",\"href\":\"https://www.youtube.com/watch?v=poTjdJrtBVY\"},{\"name\":\"1 LEG BRIDGE\",\"coords\":\"760,1789,872,1946\",\"href\":\"https://www.youtube.com/watch?v=h47aiOrdfrQ\"},{\"name\":\"SWITCH KICK\",\"coords\":\"875,1791,988,1945\",\"href\":\"https://www.youtube.com/watch?v=bGpoTDQtQu0\"},{\"name\":\"SCORPION\",\"coords\":\"74,1967,187,2124\",\"href\":\"https://www.youtube.com/watch?v=wxqHGNoii_g\"},{\"name\":\"HANGING KICK\",\"coords\":\"187,1967,302,2125\",\"href\":\"https://www.youtube.com/watch?v=RIuuTNLdrhc\"},{\"name\":\"JUMP JACK PU\",\"coords\":\"303,1969,416,2124\",\"href\":\"https://www.youtube.com/watch?v=PkzPIaxFwgY\"},{\"name\":\"CLAP PUSH-UP\",\"coords\":\"415,1967,531,2126\",\"href\":\"https://www.youtube.com/watch?v=66kecONeeTM\"},{\"name\":\"PIKE PUSH-UP\",\"coords\":\"530,1967,645,2126\",\"href\":\"https://www.youtube.com/watch?v=oJ4gRfOY2tM\"},{\"name\":\"SIDE LUNGE\",\"coords\":\"645,1967,761,2125\",\"href\":\"https://www.youtube.com/watch?v=hnQMiIiH3pc\"},{\"name\":\"KICK BRIDGE\",\"coords\":\"761,1967,873,2126\",\"href\":\"https://www.youtube.com/watch?v=e1rAaZRqY5o\"},{\"name\":\"SWITCH BACK\",\"coords\":\"872,1967,989,2125\",\"href\":\"https://www.youtube.com/watch?v=m3a9Szquz7c\"},{\"name\":\"PLANK CRAWL\",\"coords\":\"74,2149,188,2301\",\"href\":\"https://www.youtube.com/watch?v=cfVBHJOBCTI\"},{\"name\":\"BEAR HUG\",\"coords\":\"188,2147,301,2301\",\"href\":\"https://www.youtube.com/watch?v=uodSrjd_Ka0\"},{\"name\":\"SLOW PUSH UP\",\"coords\":\"301,2149,415,2301\",\"href\":\"https://www.youtube.com/watch?v=qMDPCjE3t2c\"},{\"name\":\"1 LEG JBPU\",\"coords\":\"417,2147,530,2302\",\"href\":\"https://www.youtube.com/watch?v=KAHfX3rnPkU\"},{\"name\":\"TRICEPS EXT\",\"coords\":\"531,2147,644,2301\",\"href\":\"https://www.youtube.com/watch?v=0pFJvDIjtt8\"},{\"name\":\"CHAIR POSE\",\"coords\":\"644,2147,758,2301\",\"href\":\"https://www.youtube.com/watch?v=kxxO6LSQu9s\"},{\"name\":\"1 LEG DEADLIFT\",\"coords\":\"759,2147,874,2302\",\"href\":\"https://www.youtube.com/watch?v=VINvQpXTNvU\"},{\"name\":\"FROG LUNGE\",\"coords\":\"874,2147,988,2302\",\"href\":\"https://www.youtube.com/watch?v=UrAbvsoGcVM\"},{\"name\":\"CRUNCHY FROG\",\"coords\":\"73,2324,187,2483\",\"href\":\"https://www.youtube.com/watch?v=yyLLyg2gppo\"},{\"name\":\"FULL BODY FLY\",\"coords\":\"188,2325,300,2482\",\"href\":\"https://www.youtube.com/watch?v=XBcgGdWpOI0\"},{\"name\":\"CHEST TAP PU\",\"coords\":\"300,2325,416,2483\",\"href\":\"https://www.youtube.com/watch?v=upWJQDb_Yqs\"},{\"name\":\"CRUCIFIX PU\",\"coords\":\"415,2326,531,2483\",\"href\":\"https://www.youtube.com/watch?v=fpAuZEf6zx4\"},{\"name\":\"SPRING TRIPOD\",\"coords\":\"531,2325,644,2483\",\"href\":\"https://www.youtube.com/watch?v=iQfR8H8EhhU\"},{\"name\":\"CLOCK LUNGE\",\"coords\":\"644,2325,759,2483\",\"href\":\"https://www.youtube.com/watch?v=qCCLf04udA8\"},{\"name\":\"SCISSOR JUMP\",\"coords\":\"758,2327,872,2481\",\"href\":\"https://www.youtube.com/watch?v=mX0pXnMpAKo\"},{\"name\":\"SKY KICK\",\"coords\":\"875,2325,987,2481\",\"href\":\"https://www.youtube.com/watch?v=JagxvrfKArQ\"},{\"name\":\"I POSE PUMP\",\"coords\":\"989,2327,1102,2483\",\"href\":\"https://www.youtube.com/watch?v=fUmP2mLbUkM\"},{\"name\":\"INCH WORM\",\"coords\":\"73,2507,187,2662\",\"href\":\"https://www.youtube.com/watch?v=9DehphNywHM\"},{\"name\":\"SLIDING PLANK\",\"coords\":\"189,2507,301,2662\",\"href\":\"https://www.youtube.com/watch?v=atjgkD7akL0\"},{\"name\":\"KNEE SLAP PU\",\"coords\":\"301,2506,415,2662\",\"href\":\"https://www.youtube.com/watch?v=GBE_buxlQ4Q\"},{\"name\":\"SUPERMAN PU\",\"coords\":\"415,2507,531,2664\",\"href\":\"https://www.youtube.com/watch?v=1yFM_Im1niA\"},{\"name\":\"PIKE UP\",\"coords\":\"530,2506,644,2664\",\"href\":\"https://www.youtube.com/watch?v=P3a3NSJLpfE\"},{\"name\":\"LATERAL JUMP\",\"coords\":\"643,2507,759,2664\",\"href\":\"https://www.youtube.com/watch?v=9xeFu-aqRh0\"},{\"name\":\"180 SQUAT JUMP\",\"coords\":\"759,2506,872,2662\",\"href\":\"https://www.youtube.com/watch?v=9gx0vBKrdLY\"},{\"name\":\"QUAD HOP\",\"coords\":\"875,2506,989,2662\",\"href\":\"https://www.youtube.com/watch?v=ogWEWrnOw1s\"},{\"name\":\"T POSE PUMP\",\"coords\":\"989,2508,1102,2664\",\"href\":\"https://www.youtube.com/watch?v=2aBTRN0yyRE\"},{\"name\":\"PLANK REACH\",\"coords\":\"72,2689,188,2845\",\"href\":\"https://www.youtube.com/watch?v=68IxSTft998\"},{\"name\":\"BROCK SHUFFLE\",\"coords\":\"186,2687,301,2846\",\"href\":\"https://www.youtube.com/watch?v=X-8IMtfHO3I\"},{\"name\":\"AZTEC PUSH-UP\",\"coords\":\"301,2687,415,2846\",\"href\":\"https://www.youtube.com/watch?v=bkNo3qdgm7U\"},{\"name\":\"ONE ARM LEG PU\",\"coords\":\"416,2687,531,2846\",\"href\":\"https://www.youtube.com/watch?v=pJpzsmDIbfI\"},{\"name\":\"X EXTENSION\",\"coords\":\"532,2688,644,2845\",\"href\":\"https://www.youtube.com/watch?v=v-2QBQ4BEV0\"},{\"name\":\"1 LEG 3 JUMPS\",\"coords\":\"644,2687,760,2845\",\"href\":\"https://www.youtube.com/watch?v=DgCbO6KexAg\"},{\"name\":\"FLAMINGO SQUAT\",\"coords\":\"760,2688,872,2845\",\"href\":\"https://www.youtube.com/watch?v=s1-no1gvIaE\"},{\"name\":\"DONKEY KICK\",\"coords\":\"875,2689,987,2845\",\"href\":\"https://www.youtube.com/watch?v=Txeior0NFw0\"},{\"name\":\"CROSS TOE TOUCH\",\"coords\":\"73,2865,186,3023\",\"href\":\"https://www.youtube.com/watch?v=WLSgK7qC9u4\"},{\"name\":\"\\\"V\\\" SIT\",\"coords\":\"186,2866,300,3024\",\"href\":\"https://www.youtube.com/watch?v=ic9bDxtEqCE\"},{\"name\":\"360 PUSH-UP\",\"coords\":\"301,2866,415,3024\",\"href\":\"https://www.youtube.com/watch?v=td9DSuRkAD4\"},{\"name\":\"MUAY THAI PU\",\"coords\":\"415,2865,530,3024\",\"href\":\"https://www.youtube.com/watch?v=HFmWClhYpHw\"},{\"name\":\"HAND STAND PU\",\"coords\":\"531,2865,644,3024\",\"href\":\"https://www.youtube.com/watch?v=fuZ2lZ0xRKU\"},{\"name\":\"ROCKET JUMP\",\"coords\":\"644,2865,759,3021\",\"href\":\"https://www.youtube.com/watch?v=h9aRbsDUJbY\"},{\"name\":\"POP UP\",\"coords\":\"759,2865,875,3024\",\"href\":\"https://www.youtube.com/watch?v=hRTOmWbdC4Y\"},{\"name\":\"1 LEG BURPEE\",\"coords\":\"875,2865,989,3023\",\"href\":\"https://www.youtube.com/watch?v=w0PEVXTAmKs\"},{\"name\":\"\\\"L\\\" SIT\",\"coords\":\"72,3048,186,3199\",\"href\":\"https://www.youtube.com/watch?v=ff2QRLvmWjg\"},{\"name\":\"EXTENDED PLANK\",\"coords\":\"187,3048,301,3199\",\"href\":\"https://www.youtube.com/watch?v=m_2NjJjjjpc\"},{\"name\":\"PISTOL SQUAT\",\"coords\":\"759,3046,874,3201\",\"href\":\"https://www.youtube.com/watch?v=0CiOi4nd9dI\"}]");
+            exercises.map(item => {
+                var coordString = item.coords.split(',');
+                var topLeft = { x: coordString[0], y: coordString[1] };
+                var botRight = { x: coordString[2], y: coordString[3] };
+                var coords = {
+                    x: parseInt(topLeft.x),
+                    y: parseInt(topLeft.y)
+                }
+                let baseXCoords = [73, 188, 303, 416, 531, 646, 759, 875, 987];
+                for (let coord of baseXCoords) {
+                    if (Math.abs(coord - coords.x) < 10) {
+                        coords.x = coord;
+                        break;
+                    }
+                }
+                switch (coords.x) {
+                    case 73: coords.x = -135; break;
+                    case 188: coords.x = -342; break;
+                    case 303: coords.x = -549; break;
+                    case 416: coords.x = -756; break;
+                    case 531: coords.x = -965; break;
+                    case 646: coords.x = -1170; break;
+                    case 759: coords.x = -1378; break;
+                    case 875: coords.x = -1586; break;
+                    case 987: coords.x = -1793; break;
+                }
+                let baseYCoords = [531, 711, 889, 1070, 1248, 1426, 1607, 1790, 1967, 2149, 2324, 2507, 2689, 2865, 3048];
+                for (let coord of baseYCoords) {
+                    if (Math.abs(coord - coords.y) < 10) {
+                        coords.y = coord;
+                        break;
+                    }
+                }
+                switch (coords.y) {
+                    case 531: coords.y = -965; break;
+                    case 711: coords.y = -1293; break;
+                    case 889: coords.y = -1614; break;
+                    case 1070: coords.y = -1942; break;
+                    case 1248: coords.y = -2265; break;
+                    case 1426: coords.y = -2588; break;
+                    case 1607: coords.y = -2916; break;
+                    case 1790: coords.y = -3245; break;
+                    case 1967: coords.y = -3568; break;
+                    case 2149: coords.y = -3895; break;
+                    case 2324: coords.y = -4216; break;
+                    case 2507: coords.y = -4544; break;
+                    case 2689: coords.y = -4873; break;
+                    case 2865: coords.y = -5196; break;
+                    case 3048: coords.y = -5523; break;
+                }
+                item.coords = coords;
+                return item;
+            });
+        }
+
+        function randomExercise() {
+            var ex = _.sample(exercises);
+            $('.result-image').css({
+                'background-image': 'url("https://stack52.com/wp-content/uploads/Dumbbell-Exercises.png")',
+                'background-position': `${ex.coords.x}px ${ex.coords.y}px`,
+                'background-size': 'initial',
+                'height': '275px'
+            });
+            $('.result-name').text(ex.name);
+            $('.result').prop('href', ex.href);
+            $('.result').css('display', 'block');
+        }
+
+        $(document).ready(function () {
+            $('.function-button').on('click', function () {
+                var $this = $(this);
+                if ($this.attr('data-type') == 'exercise' && _.isEmpty(exercises)) {
+                    initExercise();
+                }
+                var functionName = $this.attr('data-function');
+                $('.random-button').attr('onclick', `${functionName}()`);
+                $('.function-name').text($this.text());
+                $('.result').css('display', 'none');
+            });
+        });
 
         document.addEventListener('keypress', (e) => {
             if (e.keyCode == 32) {
-                randomHero();
+                $('.random-button').click();
             }
         });
     </script>
@@ -40,25 +132,62 @@
         /* https://colorhunt.co/palette/1919192d4263c84b31ecdbba */
         .center {
             text-align: center;
-            padding-top: 300px;
             background: #191919;
             height: 100vh;
+            position: relative;
+            overflow: hidden;
         }
 
-        #hero-img {
-            display: block;
-            margin-top: 25px;
+        .header {
+            text-align: right;
+        }
+
+        .function-name {
+            padding-top: 280px;
+        }
+
+        .result {
+            box-shadow: 4.0px 8.0px 8.0px hsl(0deg 0% 0% / 0.38);
             margin-left: auto;
             margin-right: auto;
-            width: 300px;
+            width: 200px;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+
+        .result-image {
+            width: 100%;
+            height: 0px;
+            background-repeat: no-repeat;
+            background-position: -135px -965px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .result-name {
+            background: #e7475e;
+            color: white;
+            text-align: center;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-weight: bold;
+            padding: 5px;
         }
     </style>
 </head>
+
 <body>
     <div class="center">
-        <div>7.31b</div>
-        <button onclick='randomHero()' class="button button-outline">Random</button>
-        <img id="hero-img" src="">
+        <div class="header">
+            <div class="function-button button button-clear" data-function="randomHero">Dota 2</div>
+            <div class="function-button button button-clear" data-function="randomExercise" data-type="exercise">Exercise</div>
+        </div>
+        <div class="function-name">Dota 2</div>
+        <button onclick='randomHero()' class="random-button button button-outline">Random</button>
+        <a class="result" style="display: none" href="/" target="_blank">
+            <div class="result-image"></div>
+            <div class="result-name"></div>
+        </a>
     </div>
 </body>
 
