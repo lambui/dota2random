@@ -117,7 +117,7 @@
                 }
                 var functionName = $this.attr('data-function');
                 $('.random-button').attr('onclick', `${functionName}()`);
-                $('.function-name').text($this.text());
+                $('.function-name').text($this.attr('data-text'));
                 $('.result').css('display', 'none');
             });
         });
@@ -179,10 +179,10 @@
 <body>
     <div class="center">
         <div class="header">
-            <div class="function-button button button-clear" data-function="randomHero">Dota 2</div>
-            <div class="function-button button button-clear" data-function="randomExercise" data-type="exercise">Exercise</div>
+            <div class="function-button button button-clear" data-function="randomHero" data-text="7.32c">Dota 2</div>
+            <div class="function-button button button-clear" data-function="randomExercise" data-text="Exercise" data-type="exercise">Exercise</div>
         </div>
-        <div class="function-name">Dota 2</div>
+        <div class="function-name">7.32c</div>
         <button onclick='randomHero()' class="random-button button button-outline">Random</button>
         <a class="result" style="display: none" href="/" target="_blank">
             <div class="result-image"></div>
